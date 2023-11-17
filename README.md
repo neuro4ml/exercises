@@ -8,6 +8,7 @@ Exercises for "Neuroscience for machine learners" course
 3. Brain structure [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/neuro4ml/exercises/blob/main/w3-brain-structure/w3-exercise.ipynb)
 4. Learning rules [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/neuro4ml/exercises/blob/main/w4-learning/w4-learning-exercise.ipynb)
 5. Training SNNs [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/neuro4ml/exercises/blob/main/w5-snn/w5-snn-exercise.ipynb)
+6. Understanding neural networks [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/neuro4ml/exercises/blob/main/w6-understanding/w6-snn-exercise.ipynb)
 
 ## Local install
 

@@ -8,7 +8,7 @@ Exercises for "Neuroscience for machine learners" course
 * W3. Brain structure [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/neuro4ml/exercises/blob/main/w3-brain-structure/w3-exercise.ipynb)
 * W4. Learning rules [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/neuro4ml/exercises/blob/main/w4-learning/w4-learning-exercise.ipynb)
 * W5. Training SNNs [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/neuro4ml/exercises/blob/main/w5-snn/w5-snn-exercise.ipynb)
-* W6. Understanding neural networks [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/neuro4ml/exercises/blob/main/w6-understanding/w6-snn-exercise.ipynb)
+* W6. Understanding neural networks [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/neuro4ml/exercises/blob/main/w6-understanding/w6-understanding-exercise.ipynb)
 * W8. Neuromorphic computing [![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/neuro4ml/exercises/blob/main/w8-neuromorphic/w8-neuromorphic-exercise.ipynb)
 
 ## Local install

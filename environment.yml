@@ -5,6 +5,7 @@ channels:
 dependencies:
   - python=3.9
   - matplotlib
+  - seaborn
   - scipy
   - jupyter
   - notebook
@@ -16,3 +17,5 @@ dependencies:
   - pip
   - pip:
     - brian2
+    - snntorch
+    - omegaconf

@@ -49,41 +49,45 @@ class NeuromorphicChip:
         self, snn: Optional[SNNModel] = None, input_data: torch.Tensor = None
     ) -> Dict:
         """
-        Run the mapped SNN and return performance metrics
-        TODO: Implement the rest of the method.
+        Run the mapped SNN and return performance metrics. The steps are the following:
         1/ Run the SNN simulation
+        TODO: Implement the rest of the method.
         2/ Compute the total number of spikes and the spike rate
         3/ Compute the total energy consumed by the SNN
         4/ Return the results in a dictionary
         """
+
         if snn is not None:
+            # Map the SNN to the chip and check if it fits
             self.map(snn)
 
-        # Run the actual network simulation
+        # Run the actual network simulation. We don't need to compute gradients for this.
         with torch.no_grad():
             spk_rec, mem_rec = self.mapped_snn(input_data)
 
-        # Get actual spike events
+        # Get network recordings for all layers.
         recordings = self.mapped_snn.recordings
 
         # Calculate spike metrics
-        total_spikes = None
-        spike_rate = None
+        total_spikes = None  # TODO: Calculate total number of spikes
+        spike_rate = None  # TODO: Calculate spike rate
 
         # Calculate energy metrics
-        # TODO: Get the total number of neuron updates
+        # TODO: Get the total number of neuron updates. This should not depend on the recordings.
         total_neuron_updates = None
 
-        # TODO: Get the total number of synapse events
+        # TODO: Get the total number of synapse events. This should depend on the recordings.
         # To get the total number of synapse events, we need to sum the number of
-        # spikes times the number of synapses for each layer
+        # spikes x the number of synapses for each layer. For a dense cinnectivity this is straightforward.
+        # For a sparse connectivity, we need to sum the number of non-zero weights in the synapse matrix.
         total_synapse_events = None
 
-        # TODO: Calculate energy metrics
+        # TODO: Calculate energy metrics. To do so, use the chip energy parameters.
         energy_neurons = None
         energy_synapses = None
         total_energy = None
 
+        # Return the results in a dictionary
         sim_results = {
             "total_energy_nJ": total_energy,
             "memory_usage_bytes": self.calculate_memory_usage(self.mapped_snn),

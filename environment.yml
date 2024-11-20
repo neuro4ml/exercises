@@ -19,3 +19,4 @@ dependencies:
     - brian2
     - snntorch
     - omegaconf
+    - tqdm

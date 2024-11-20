@@ -13,8 +13,8 @@ def get_dataloaders(
     batch_size: int = 32,
     train_split: float = 0.8,
 ):
-    data = torch.load("dataset")
-    labels = torch.load("dataset_labels")
+    data = torch.load("dataset", weights_only=True)
+    labels = torch.load("dataset_labels", weights_only=True)
     spike_times = data[..., 0].int().long()
     spikes = torch.nn.functional.one_hot(spike_times, num_classes=100).transpose(1, 2)
 
@@ -76,11 +76,12 @@ class SNNTrainer:
         """
         Calculate accuracy and loss from a rate-based loss
         TODO: Complete this method to return accuracy and loss
-        Optional: Implement a temporal time-to-first-spike based loss using snn.
+        Optional: Implement a temporal time-to-first-spike based loss using snnTorch.
         """
-        raise NotImplementedError("Accuracy and loss not implemented")
 
         loss = self.loss_fn(spikes, target).mean()
+        acc = None
+        raise NotImplementedError("Accuracy and loss not implemented")
 
         return acc, loss.item()
 
@@ -89,7 +90,7 @@ class SNNTrainer:
         train_loader: torch.utils.data.DataLoader,
         epoch: int,
         n_epochs: int,
-        pbar: tqdm | None = None,
+        pbar: tqdm = None,
     ) -> TrainingMetrics:
         self.model.train()
         total_correct = 0
@@ -158,7 +159,7 @@ class SNNTrainer:
     def evaluate(
         self,
         test_loader: torch.utils.data.DataLoader,
-        pbar: tqdm | None = None,
+        pbar: tqdm = None,
         epoch=-1,
     ) -> TrainingMetrics:
         self.model.eval()

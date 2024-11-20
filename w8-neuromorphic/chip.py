@@ -3,6 +3,7 @@ import numpy as np
 from typing import Dict, Optional
 from models import SNNModel
 
+# DO NOT CHANGE THESE PARAMETERS
 ENERGY_NORMALIZATION_FACTOR = 10_000
 PARETO_ALPHA = 0.5
 
@@ -14,7 +15,7 @@ class NeuromorphicChip:
         ⚡ DO NOT CHANGE THESE PARAMETERS. THESE ARE THE CONSTRAINTS YOU NEED TO WORK WITH ⚡
         """
         self.MAX_NEURONS = 1024
-        self.MAX_SYNAPSES = self.MAX_NEURONS * 128
+        self.MAX_SYNAPSES = self.MAX_NEURONS * 64
         self.MEMORY_PER_NEURON = 32  # bytes
         self.MEMORY_PER_SYNAPSE = 4  # bytes
         self.TOTAL_MEMORY = (

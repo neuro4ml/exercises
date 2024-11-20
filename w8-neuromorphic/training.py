@@ -28,12 +28,21 @@ def get_dataloaders(
         [train_size, test_size],
     )
 
+    def collate_fn(batch):
+        # Unpack the batch into inputs and targets
+        inputs, targets = zip(*batch)
+        # Stack and transpose inputs from (batch, time, features) to (time, batch, features)
+        inputs = torch.stack(inputs).transpose(0, 1)
+        # Stack targets normally
+        targets = torch.stack(targets)
+        return inputs, targets
+
     # Create data loaders
     train_loader = torch.utils.data.DataLoader(
-        train_dataset, batch_size=batch_size, shuffle=True
+        train_dataset, batch_size=batch_size, shuffle=True, collate_fn=collate_fn
     )
     test_loader = torch.utils.data.DataLoader(
-        test_dataset, batch_size=batch_size, shuffle=False
+        test_dataset, batch_size=batch_size, shuffle=False, collate_fn=collate_fn
     )
 
     return train_loader, test_loader, dataset
@@ -81,7 +90,8 @@ class SNNTrainer:
 
         loss = self.loss_fn(spikes, target).mean()
         acc = None
-        raise NotImplementedError("Accuracy and loss not implemented")
+
+        raise NotImplementedError("Accuracy not implemented")
 
         return acc, loss.item()
 
@@ -109,8 +119,7 @@ class SNNTrainer:
         for batch_idx, (data, target) in enumerate(pbar):
             self.optimizer.zero_grad()
 
-            # Transpose data for time-first format
-            data = data.transpose(0, 1).float().to(self.device)
+            data = data.float().to(self.device)
             target = target.to(self.device)
 
             # Forward pass
@@ -173,7 +182,7 @@ class SNNTrainer:
 
         with torch.no_grad():
             for data, target in test_loader:
-                data = data.transpose(0, 1).float().to(self.device)
+                data = data.float().to(self.device)
                 target = target.to(self.device)
 
                 (spikes, mem), results = self.chip.run(self.model, input_data=data)
